@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mind Dok – Privacy Policy</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 40px 24px;
+      color: #1a1a2e;
+      background: #f8f8fc;
+      line-height: 1.7;
+    }
+    h1 { color: #1565C0; margin-bottom: 4px; }
+    h2 { color: #0D47A1; margin-top: 32px; }
+    .updated { color: #6b7280; font-size: 0.9em; margin-bottom: 32px; }
+    a { color: #1565C0; }
+    ul { padding-left: 20px; }
+    li { margin-bottom: 6px; }
+  </style>
+</head>
+<body>
+
+<h1>Mind Dok – Privacy Policy</h1>
+<p class="updated">Last updated: 13 June 2026</p>
+
+<p>Mind Dok is a document assistant app developed by Muhammad Asif, Aarhus, Denmark
+(package: <code>dk.masif.minddok</code>). This policy explains what data the app
+processes and how it is handled.</p>
+
+<h2>What Mind Dok Does</h2>
+<p>Mind Dok lets you import documents (PDFs, images, scanned pages) to your device,
+extract text using on-device OCR, and optionally analyse the text with an AI service
+to identify key facts, deadlines, and reminders. All document storage and reminders
+are local to your device.</p>
+
+<h2>Data Stored on Your Device</h2>
+<p>The following data is stored locally in an encrypted SQLite database and never
+uploaded to any server by Mind Dok itself:</p>
+<ul>
+  <li>Imported document files (copies stored in the app's private storage)</li>
+  <li>OCR-extracted text from those documents</li>
+  <li>Reminders and calendar events derived from document content</li>
+  <li>App settings including your preferred language</li>
+</ul>
+
+<h2>AI Analysis (Optional)</h2>
+<p>If you choose to enable AI analysis, you provide a personal API key for the
+<strong>Mistral AI</strong> service. When AI analysis is triggered for a document,
+the OCR text of that document is sent to Mistral AI's servers
+(<code>api.mistral.ai</code>) over an encrypted HTTPS connection for processing.
+No document files, images, or other personal information are transmitted —
+only the extracted plain text.</p>
+<p>Your API key is stored locally on your device using Android's
+<code>SharedPreferences</code> and is never transmitted to any server other than
+Mistral's own API endpoint. Mistral AI's own privacy policy governs how they
+handle API requests: <a href="https://mistral.ai/privacy/" target="_blank">mistral.ai/privacy</a>.</p>
+<p>AI analysis is entirely optional. The app is fully functional without it.</p>
+
+<h2>Biometric Authentication (Optional)</h2>
+<p>Mind Dok can lock itself behind your device's biometric authentication (fingerprint
+or face unlock). This is handled entirely by Android's
+<code>BiometricPrompt</code> API. No biometric data is accessed or stored by the app.</p>
+
+<h2>Permissions</h2>
+<ul>
+  <li><strong>Camera</strong> – used only for the in-app document scanner feature</li>
+  <li><strong>Storage / Media</strong> – to read files you choose to import</li>
+  <li><strong>Calendar</strong> – to add events you explicitly confirm</li>
+  <li><strong>Notifications</strong> – to deliver document reminders you set up</li>
+  <li><strong>Biometrics</strong> – to lock the app if you enable that feature</li>
+  <li><strong>Internet</strong> – used only when AI analysis is enabled (Mistral API)</li>
+</ul>
+<p>No permission is used for advertising, tracking, or analytics purposes.</p>
+
+<h2>Third-Party Services</h2>
+<p>Mind Dok does not include any advertising SDKs, analytics libraries, or crash-reporting
+services. The only optional third-party network call is to the Mistral AI API described
+above, and only when you have entered an API key and triggered an analysis.</p>
+
+<h2>Data Sharing</h2>
+<p>Mind Dok does <strong>not</strong> sell, rent, or share your data with any third party,
+except as described under AI Analysis above (text sent to Mistral when you opt in).</p>
+
+<h2>Data Deletion</h2>
+<p>All data is stored on your device. You can delete individual documents and reminders
+within the app, or uninstall the app to remove all associated data. No data is retained
+on any external server by Mind Dok.</p>
+
+<h2>Children</h2>
+<p>Mind Dok is not directed at children under 13. The app does not knowingly collect
+personal information from children.</p>
+
+<h2>Changes to This Policy</h2>
+<p>If this policy changes, the updated version will be published at this URL. The
+"Last updated" date at the top will reflect any revision.</p>
+
+<h2>Contact</h2>
+<p>Questions about this privacy policy? Contact Muhammad Asif at
+<a href="mailto:mail.masif@gmail.com">mail.masif@gmail.com</a>.<br/>
+Aarhus, Denmark.</p>
+
+</body>
+</html>
