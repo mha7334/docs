@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DoScan – Privacy Policy</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 16px; line-height: 1.7; color: #1a1a2e;
+      background: #f8f7ff; padding: 0 16px 64px;
+    }
+    header {
+      background: linear-gradient(135deg, #2a158a 0%, #5b41ff 100%);
+      color: #fff; padding: 40px 24px 32px; margin: 0 -16px 40px;
+      text-align: center;
+    }
+    header h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.5px; }
+    header p  { margin-top: 8px; opacity: .82; font-size: .95rem; }
+    .container { max-width: 740px; margin: 0 auto; }
+    h2 {
+      font-size: 1.15rem; font-weight: 600; color: #2a158a;
+      margin: 36px 0 10px; padding-bottom: 6px;
+      border-bottom: 2px solid #e8e4ff;
+    }
+    p   { margin-bottom: 14px; }
+    ul  { margin: 0 0 14px 24px; }
+    li  { margin-bottom: 6px; }
+    .chip {
+      display: inline-block; background: #ede9ff; color: #4b31cc;
+      border-radius: 20px; padding: 2px 12px; font-size: .85rem;
+      font-weight: 500; margin: 2px 4px 2px 0;
+    }
+    .highlight {
+      background: #f0edff; border-left: 4px solid #5b41ff;
+      border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 18px 0;
+    }
+    footer {
+      margin-top: 56px; padding-top: 24px; border-top: 1px solid #ddd;
+      font-size: .85rem; color: #888; text-align: center;
+    }
+    a { color: #5b41ff; }
+  </style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <h1>DoScan – Privacy Policy</h1>
+    <p>Last updated: June 2026</p>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="highlight">
+    <strong>Short version:</strong> DoScan processes everything on your device. We do not collect, store, or share any personal data. No accounts, no servers, no tracking.
+  </div>
+
+  <h2>1. Who We Are</h2>
+  <p>DoScan is developed and maintained by <strong>Masif</strong> (contact: <a href="mailto:muas@boyum-it.com">muas@boyum-it.com</a>). The app is published on the Google Play Store under the package ID <code>dk.masif.doscan</code>.</p>
+
+  <h2>2. Permissions We Request and Why</h2>
+
+  <p><span class="chip">CAMERA</span></p>
+  <p>Used to capture document scans, QR/barcode scans, business card scans, and passport photos. Images are saved only to your device's local storage. The camera is never accessed in the background.</p>
+
+  <p><span class="chip">READ_EXTERNAL_STORAGE</span> <span class="chip">WRITE_EXTERNAL_STORAGE</span></p>
+  <p>Used to save scanned images and generated PDF files to your device. Files are stored in the app's private documents directory and are never uploaded anywhere.</p>
+
+  <p><span class="chip">READ_CONTACTS</span> <span class="chip">WRITE_CONTACTS</span></p>
+  <p>Requested only when you explicitly choose to save a scanned business card to your contacts. We do not read or access contacts at any other time.</p>
+
+  <p><span class="chip">USE_BIOMETRIC</span> <span class="chip">USE_FINGERPRINT</span></p>
+  <p>Used optionally for app lock (if enabled in Settings). Biometric data never leaves your device — authentication is handled entirely by Android's system APIs.</p>
+
+  <h2>3. Data We Collect</h2>
+  <p>We collect <strong>no personal data whatsoever</strong>. Specifically:</p>
+  <ul>
+    <li>No names, email addresses, or account information</li>
+    <li>No location data</li>
+    <li>No usage analytics or crash reporting</li>
+    <li>No advertising identifiers</li>
+    <li>No data is transmitted to any external server</li>
+  </ul>
+
+  <h2>4. Data Stored on Your Device</h2>
+  <p>DoScan stores the following data <strong>locally on your device only</strong>:</p>
+  <ul>
+    <li>Scanned images and generated PDFs (in app private storage)</li>
+    <li>Folder names and document metadata (in a local SQLite database)</li>
+    <li>App settings such as theme preference (in shared preferences)</li>
+    <li>QR/barcode scan history (in a local SQLite database)</li>
+  </ul>
+  <p>All of this data remains on your device at all times. Uninstalling the app removes all locally stored data.</p>
+
+  <h2>5. Third-Party Services</h2>
+  <p>DoScan does not integrate any third-party analytics, advertising, or tracking SDKs. The app uses the following on-device Google ML Kit libraries for text and barcode recognition — these libraries run entirely on-device and do not send data to Google:</p>
+  <ul>
+    <li>Google ML Kit Text Recognition (OCR)</li>
+    <li>Google ML Kit Barcode Scanning</li>
+  </ul>
+
+  <h2>6. Children's Privacy</h2>
+  <p>DoScan does not knowingly collect data from children under 13. Since we collect no personal data from anyone, the app is safe for users of all ages.</p>
+
+  <h2>7. Data Security</h2>
+  <p>Since all data is stored locally on your device, it is protected by your device's built-in security (screen lock, encryption). We have no access to your device or its data.</p>
+
+  <h2>8. Changes to This Policy</h2>
+  <p>If we make material changes to this policy, we will update the "Last updated" date at the top of this page. Continued use of the app after changes constitutes acceptance of the updated policy.</p>
+
+  <h2>9. Contact Us</h2>
+  <p>If you have any questions or concerns about this privacy policy, please contact us at:<br>
+  <a href="mailto:muas@boyum-it.com">muas@boyum-it.com</a></p>
+
+</div>
+
+<footer>
+  <div class="container">
+    &copy; 2026 Masif · DoScan · <a href="mailto:muas@boyum-it.com">muas@boyum-it.com</a>
+  </div>
+</footer>
+</body>
+</html>
