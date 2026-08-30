@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Mind Dok — App Introduction</title>
+<style>
+  :root {
+    --blue: #1565C0;
+    --blue-dark: #0D47A1;
+    --blue-light: #E3F2FD;
+    --ink: #1a1a2e;
+    --muted: #5f6b7a;
+    --bg: #f6f8fc;
+    --card: #ffffff;
+    --green: #4CAF50;
+    --orange: #FF9800;
+    --red: #EF5350;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    height: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    overflow: hidden;
+  }
+
+  .deck { position: relative; width: 100%; height: 100%; }
+
+  .slide {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 56px 64px;
+    opacity: 0;
+    transform: translateX(40px);
+    transition: opacity .45s ease, transform .45s ease;
+    pointer-events: none;
+  }
+  .slide.active {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+  }
+
+  .slide-inner {
+    max-width: 1000px;
+    width: 100%;
+    max-height: 100%;
+    overflow-y: auto;
+  }
+
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--blue);
+    margin-bottom: 14px;
+  }
+  h1 { font-size: 56px; line-height: 1.1; color: var(--ink); font-weight: 800; }
+  h2 { font-size: 40px; line-height: 1.15; color: var(--ink); font-weight: 800; margin-bottom: 18px; }
+  h3 { font-size: 22px; color: var(--blue-dark); margin-bottom: 10px; }
+  p { font-size: 19px; line-height: 1.6; color: var(--muted); }
+  .lead { font-size: 24px; color: var(--ink); }
+
+  .accent { color: var(--blue); }
+  .grid { display: grid; gap: 20px; margin-top: 28px; }
+  .grid-2 { grid-template-columns: 1fr 1fr; }
+  .grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+
+  .card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 6px 20px rgba(15, 40, 80, .08);
+    border: 1px solid rgba(15, 40, 80, .06);
+  }
+  .card .icon {
+    width: 46px; height: 46px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px;
+    margin-bottom: 14px;
+  }
+  .card h3 { font-size: 19px; }
+  .card p { font-size: 16px; }
+
+  .steps { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 26px; }
+  .step {
+    flex: 1 1 150px;
+    background: var(--card);
+    border-radius: 14px;
+    padding: 20px;
+    text-align: center;
+    border-top: 4px solid var(--blue);
+  }
+  .step .num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 40px; height: 40px; border-radius: 50%;
+    background: var(--blue); color: #fff;
+    font-weight: 800; font-size: 18px; margin-bottom: 12px;
+  }
+  .step p { font-size: 15px; margin-top: 8px; }
+
+  .pill {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: var(--blue-light);
+    color: var(--blue-dark);
+    font-size: 14px;
+    font-weight: 600;
+    margin: 4px 4px 4px 0;
+  }
+
+  .title-slide { text-align: center; }
+  .title-slide .logo {
+    width: 92px; height: 92px; border-radius: 24px;
+    background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+    color: #fff; font-size: 40px; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 28px;
+  }
+  .title-slide h1 { font-size: 64px; }
+  .title-slide .tagline { font-size: 26px; color: var(--muted); margin-top: 16px; }
+
+  .big-quote {
+    font-size: 32px; font-weight: 700; line-height: 1.35; color: var(--ink);
+  }
+  .big-quote .hl { color: var(--blue); }
+
+  .check-list { list-style: none; margin-top: 20px; }
+  .check-list li {
+    font-size: 20px; line-height: 1.5; padding: 10px 0;
+    border-bottom: 1px solid rgba(15,40,80,.08);
+    display: flex; align-items: center; gap: 12px;
+  }
+  .check-list li::before {
+    content: "✓"; color: var(--green); font-weight: 800; font-size: 22px;
+    min-width: 28px;
+  }
+
+  .demo-box {
+    background: linear-gradient(135deg, #0D47A1, #1565C0);
+    color: #fff; border-radius: 18px; padding: 34px;
+    margin-top: 24px;
+  }
+  .demo-box h3 { color: #fff; }
+  .demo-box p { color: rgba(255,255,255,.9); }
+
+  /* Controls */
+  .controls {
+    position: fixed; bottom: 24px; right: 28px;
+    display: flex; gap: 10px; z-index: 10;
+  }
+  .controls button {
+    width: 46px; height: 46px; border-radius: 50%;
+    border: none; background: var(--card); color: var(--blue-dark);
+    font-size: 20px; cursor: pointer;
+    box-shadow: 0 4px 14px rgba(15,40,80,.15);
+    transition: background .2s;
+  }
+  .controls button:hover { background: var(--blue-light); }
+
+  .progress {
+    position: fixed; top: 0; left: 0; height: 4px;
+    background: var(--blue); width: 0%;
+    transition: width .3s ease; z-index: 10;
+  }
+  .counter {
+    position: fixed; bottom: 34px; left: 34px;
+    font-size: 14px; color: var(--muted); font-weight: 600;
+    z-index: 10;
+  }
+  .hint {
+    position: fixed; bottom: 36px; left: 50%;
+    transform: translateX(-50%);
+    font-size: 13px; color: #a0a8b4; z-index: 10;
+  }
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+<div class="deck" id="deck">
+
+  <!-- 1. Title -->
+  <section class="slide active title-slide">
+    <div class="slide-inner">
+      <div class="logo">MD</div>
+      <p class="eyebrow">App Introduction</p>
+      <h1>Mind Dok</h1>
+      <p class="tagline">AI document assistant — scan, understand, and never miss a deadline.</p>
+      <p style="margin-top:28px; font-size:16px;">Presented for end-user onboarding · Danish digital documents · Android</p>
+    </div>
+  </section>
+
+  <!-- 2. The problem -->
+  <section class="slide">
+    <div class="slide-inner">
+      <p class="eyebrow">Why Mind Dok exists</p>
+      <h2>The problem for Danish citizens</h2>
+      <p class="lead" style="margin-top:16px;">Important documents arrive digitally every week — but deadlines still get missed.</p>
+      <div class="grid grid-3">
+        <div class="card">
+          <div class="icon" style="background:#FFF3E0;">📄</div>
+          <h3>Scattered</h3>
+          <p>Letters live in mit.dk, e-Boks, email, and apps — nowhere together.</p>
+        </div>
+        <div class="card">
+          <div class="icon" style="background:#FFEBEE;">⏰</div>
+          <h3>Missed deadlines</h3>
+          <p>Payment due dates, tax deadlines, and appointments slip through the cracks.</p>
+        </div>
+        <div class="card">
+          <div class="icon" style="background:#E8F5E9;">🔍</div>
+          <h3>Hard to read</h3>
+          <p>Official letters are dense. Finding the one action that matters takes time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. What is Mind Dok -->
+  <section class="slide">
+    <div class="slide-inner">
+      <p class="eyebrow">The solution</p>
+      <h2>One app that reads your documents — <span class="accent">and tells you what to do</span></h2>
+      <p style="margin-top:18px;">Mind Dok turns your paper and digital documents into an organised, searchable library, then automatically creates reminders for every deadline, appointment, and due date it finds.</p>
+      <div class="grid grid-2" style="margin-top:30px;">
+        <div class="card"><h3>📥 Import anything</h3><p>PDFs, photos, scans, Word, Excel — via share menu, printer, or camera.</p></div>
+        <div class="card"><h3>🤖 AI analysis</h3><p>Identifies type, amounts, organisations, and dates as tappable key-fact chips.</p></div>
+        <div class="card"><h3>⏰ Auto reminders</h3><p>Reminders created automatically with the right lead time based on urgency.</p></div>
+        <div class="card"><h3>📅 Calendar sync</h3><p>Appointments add to the device calendar with one tap.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. How it works -->
+  <section class="slide">
+    <div class="slide-inner">
+      <p class="eyebrow">The flow</p>
+      <h2>How it works — in 5 simple steps</h2>
+      <div class="steps">
+        <div class="step"><div class="num">1</div><h3>Share</h3><p>Open a document and share it to Mind Dok (or print to it).</p></div>
+        <div class="step"><div class="num">2</div><h3>Capture</h3><p>Mind Dok stores the file securely on the device.</p></div>
+        <div class="step"><div class="num">3</div><h3>OCR</h3><p>On-device text recognition extracts the content.</p></div>
+        <div class="step"><div class="num">4</div><h3>Analyse</h3><p>Deadlines, amounts, and organisations are identified.</p></div>
+        <div class="step"><div class="num">5</div><h3>Remind</h3><p>Reminders and calendar events are created automatically.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Key features -->
+  <section class="slide">
+    <div class="slide-inner">
+      <p class="eyebrow">Feature highlights</p>
+      <h2>What makes Mind Dok special</h2>
+      <ul class="check-list">
+        <li>Import PDF, JPG, PNG, DOCX, XLSX, TXT and more</li>
+        <li>Camera document scanner with edge detection</li>
+        <li>On-device OCR — Google ML Kit, no internet needed</li>
+        <li>Optional AI analysis via Mistral (bring your own key)</li>
+        <li>Automatic reminders with priority levels (low → urgent)</li>
+        <li>Calendar event creation from appointment documents</li>
+        <li>Biometric app lock (fingerprint / face)</li>
+        <li>Danish and English interface</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 6. Categories -->
+  <section class="slide">
+    <div class="slide-inner">
+      <p class="eyebrow">Document coverage</p>
+      <h2>Built for the documents Danes actually receive</h2>
+      <div style="margin-top:26px;">
+        <span class="pill">Fakturaer · Invoices</span>
+        <span class="pill">Skat · Tax</span>
+        <span class="pill">Sundhed · Healthcare</span>
+        <span class="pill">Forsikring · Insurance</span>
+        <span class="pill">Kommune · Municipality</span>
+        <span class="pill">Pension</span>
+        <span class="pill">Kontrakter · Contracts</span>
+        <span class="pill">Aftaler · Appointments</span>
+      </div>
+      <p style="margin-top:26px;">Each document is automatically sorted into the right category so users always know where to find it.</p>
+    </div>
+  </section>
+
+  <!-- 7. Privacy -->
+  <section class="slide">
+    <div class="slide-inner">
+      <p class="eyebrow">Trust &amp; security</p>
+      <h2>Fully private — <span class="accent">documents never leave the device</span></h2>
+      <div class="grid grid-2" style="margin-top:24px;">
+        <div class="card"><h3>🔒 Local storage</h3><p>All documents and reminders are stored on-device. No account required.</p></div>
+        <div class="card"><h3>🚫 No tracking</h3><p>No ads, no analytics, no cloud sync by Mind Dok itself.</p></div>
+        <div class="card"><h3>📶 Offline OCR</h3><p>Text recognition runs on-device with Google ML Kit.</p></div>
+        <div class="card"><h3>🔐 Biometric lock</h3><p>Optional fingerprint / face unlock keeps documents secure.</p></div>
+      </div>
+      <div class="demo-box">
+        <h3>About AI analysis</h3>
+        <p>AI analysis is optional. If enabled, only the extracted text (never the file) is sent to Mistral's API over an encrypted connection — using the user's own API key.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. For presenters -->
+  <section class="slide">
+    <div class="slide-inner">
+      <p class="eyebrow">Presenter guide</p>
+      <h2>Live demo — suggested script</h2>
+      <div class="steps" style="margin-top:22px;">
+        <div class="step"><div class="num">1</div><h3>Import</h3><p>Share a sample invoice from email to Mind Dok.</p></div>
+        <div class="step"><div class="num">2</div><h3>Watch</h3><p>Show OCR + AI extracting amounts and due dates.</p></div>
+        <div class="step"><div class="num">3</div><h3>Remind</h3><p>Point to the auto-created reminder and calendar event.</p></div>
+        <div class="step"><div class="num">4</div><h3>Lock</h3><p>Enable biometric lock to demonstrate security.</p></div>
+      </div>
+      <div class="demo-box" style="margin-top:24px;">
+        <h3>Talking point</h3>
+        <p>"Imagine every letter from mit.dk and e-Boks landing here — organised, understood, and reminding you before anything is due. That's Mind Dok."</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. Closing -->
+  <section class="slide title-slide">
+    <div class="slide-inner">
+      <div class="logo">MD</div>
+      <h2 style="font-size:44px;">Ready when they need it.</h2>
+      <p class="lead" style="margin-top:18px;">Mind Dok helps Danish citizens stay on top of their documents — privately, automatically, and in their own language.</p>
+      <p style="margin-top:32px; font-size:16px; color:var(--muted);">Mind Dok · dk.masif.minddok · Danish &amp; English</p>
+    </div>
+  </section>
+
+</div>
+
+<div class="counter" id="counter">1 / 9</div>
+<div class="hint">Use ← → arrow keys, or click the buttons</div>
+<div class="controls">
+  <button onclick="prev()" aria-label="Previous">‹</button>
+  <button onclick="next()" aria-label="Next">›</button>
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const progress = document.getElementById('progress');
+  const counter = document.getElementById('counter');
+  let current = 0;
+
+  function show(n) {
+    current = (n + slides.length) % slides.length;
+    slides.forEach((s, i) => s.classList.toggle('active', i === current));
+    progress.style.width = ((current + 1) / slides.length * 100) + '%';
+    counter.textContent = (current + 1) + ' / ' + slides.length;
+  }
+  function next() { show(current + 1); }
+  function prev() { show(current - 1); }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); next(); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); }
+    if (e.key === 'Home') { e.preventDefault(); show(0); }
+    if (e.key === 'End') { e.preventDefault(); show(slides.length - 1); }
+  });
+
+  // Click on slide advances (tap-friendly for tablets)
+  document.getElementById('deck').addEventListener('click', (e) => {
+    if (e.target.closest('.controls')) return;
+    next();
+  });
+
+  show(0);
+</script>
+</body>
+</html>
