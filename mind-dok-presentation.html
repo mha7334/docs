@@ -183,6 +183,33 @@
     transform: translateX(-50%);
     font-size: 13px; color: #a0a8b4; z-index: 10;
   }
+
+  /* Screenshot gallery */
+  .shots {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 26px;
+  }
+  .shot {
+    background: var(--card);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(15,40,80,.10);
+    border: 1px solid rgba(15,40,80,.06);
+    transition: transform .2s ease;
+  }
+  .shot:hover { transform: translateY(-4px); }
+  .shot img {
+    width: 100%;
+    display: block;
+    aspect-ratio: 9 / 19;
+    object-fit: cover;
+    object-position: top;
+  }
+  @media (max-width: 700px) {
+    .shots { grid-template-columns: repeat(2, 1fr); }
+  }
 </style>
 </head>
 <body>
@@ -340,9 +367,28 @@
     </div>
   </section>
 
+  <!-- 10. Screenshots -->
+  <section class="slide">
+    <div class="slide-inner">
+      <p class="eyebrow">App tour</p>
+      <h2>Screenshots</h2>
+      <div class="shots">
+        <div class="shot"><img src="screenshots/screenshot-1.jpg" alt="Mind Dok documents list"/></div>
+        <div class="shot"><img src="screenshots/screenshot-2.jpg" alt="Mind Dok import screen"/></div>
+        <div class="shot"><img src="screenshots/screenshot-3.jpg" alt="Mind Dok home screen"/></div>
+        <div class="shot"><img src="screenshots/screenshot-4.jpg" alt="Mind Dok screenshot"/></div>
+        <div class="shot"><img src="screenshots/screenshot-5.jpg" alt="Mind Dok screenshot"/></div>
+        <div class="shot"><img src="screenshots/screenshot-6.jpg" alt="Mind Dok screenshot"/></div>
+        <div class="shot"><img src="screenshots/screenshot-7.jpg" alt="Mind Dok screenshot"/></div>
+        <div class="shot"><img src="screenshots/screenshot-8.jpg" alt="Mind Dok screenshot"/></div>
+        <div class="shot"><img src="screenshots/screenshot-9.jpg" alt="Mind Dok screenshot"/></div>
+      </div>
+    </div>
+  </section>
+
 </div>
 
-<div class="counter" id="counter">1 / 9</div>
+<div class="counter" id="counter">1 / 10</div>
 <div class="hint">Use ← → arrow keys, or click the buttons</div>
 <div class="controls">
   <button onclick="prev()" aria-label="Previous">‹</button>
