@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SQU KnowledgeHub – Privacy Policy</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 16px; line-height: 1.7; color: #12203a;
+      background: #f4f6fa; padding: 0 16px 64px;
+    }
+    header {
+      background: linear-gradient(135deg, #0b2e5c 0%, #00857d 100%);
+      color: #fff; padding: 40px 24px 32px; margin: 0 -16px 40px;
+      text-align: center;
+    }
+    header h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.5px; }
+    header p  { margin-top: 8px; opacity: .82; font-size: .95rem; }
+    .container { max-width: 740px; margin: 0 auto; }
+    h2 {
+      font-size: 1.15rem; font-weight: 600; color: #0b2e5c;
+      margin: 36px 0 10px; padding-bottom: 6px;
+      border-bottom: 2px solid #dbe7ee;
+    }
+    p   { margin-bottom: 14px; }
+    ul  { margin: 0 0 14px 24px; }
+    li  { margin-bottom: 6px; }
+    .chip {
+      display: inline-block; background: #e4f3f1; color: #00655f;
+      border-radius: 20px; padding: 2px 12px; font-size: .85rem;
+      font-weight: 500; margin: 2px 4px 2px 0;
+    }
+    .highlight {
+      background: #e8eef7; border-left: 4px solid #0b2e5c;
+      border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 18px 0;
+    }
+    .notice {
+      background: #fdf6e3; border-left: 4px solid #c8a02c;
+      border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 18px 0;
+    }
+    table {
+      width: 100%; border-collapse: collapse; margin: 14px 0 20px;
+      font-size: .95rem;
+    }
+    th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid #dbe7ee; vertical-align: top; }
+    th { background: #e8eef7; color: #0b2e5c; font-weight: 600; }
+    code { background: #e8eef7; padding: 1px 6px; border-radius: 4px; font-size: .9em; }
+    footer {
+      margin-top: 56px; padding-top: 24px; border-top: 1px solid #ddd;
+      font-size: .85rem; color: #888; text-align: center;
+    }
+    a { color: #00857d; }
+  </style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <h1>SQU KnowledgeHub – Privacy Policy</h1>
+    <p>Last updated: September 2026</p>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="highlight">
+    <strong>Short version:</strong> SQU KnowledgeHub has no accounts, no analytics, no advertising and no tracking, and it never asks for your name or any other identifying detail. It is not, however, an offline app: to answer a question it sends that question — together with short extracts of the official SQU documents — to an AI service. If you use voice input, your device's speech recognition service converts your speech to text. Those two points are explained in full below.
+  </div>
+
+  <h2>1. Who We Are</h2>
+  <p>SQU KnowledgeHub is developed and maintained by <strong>Muhammad Asif</strong> (contact: <a href="mailto:mail.masif@gmail.com">mail.masif@gmail.com</a>). The app is published on the Google Play Store under the package ID <code>om.edu.squ.squ_knowledgehub</code>.</p>
+  <p>The app is a study aid that answers questions using official Sultan Qaboos University documents that have been made available to it. It is not a channel for contacting the university, and it is not a substitute for official advice from your college or the Deanship of Admissions and Registration.</p>
+
+  <h2>2. Permissions We Request and Why</h2>
+
+  <p><span class="chip">RECORD_AUDIO</span></p>
+  <p>Used only for voice input, and requested only the first time you tap the microphone button. The app never records in the background, never records unless you have started a dictation, and stops as soon as you stop speaking or tap again. If you decline this permission the app remains fully usable by typing.</p>
+
+  <p><span class="chip">INTERNET</span> <span class="chip">ACCESS_NETWORK_STATE</span></p>
+  <p>Used to download the official SQU documents and to obtain answers to your questions. <code>ACCESS_NETWORK_STATE</code> is used only to tell you that you are offline rather than failing silently.</p>
+
+  <p>The app requests no other permissions. It does not access your location, contacts, camera, photos, files, calendar or call history.</p>
+
+  <h2>3. What Leaves Your Device, and Where It Goes</h2>
+  <p>This is the section that matters most, so it is stated plainly.</p>
+
+  <table>
+    <tr><th>What</th><th>Goes to</th><th>Why</th></tr>
+    <tr>
+      <td>Your question, plus short extracts of the SQU documents relevant to it, plus the recent messages in the current conversation</td>
+      <td>A relay operated by the app developer on Cloudflare Workers, which forwards it to <strong>Mistral AI</strong> (mistral.ai)</td>
+      <td>To generate the answer</td>
+    </tr>
+    <tr>
+      <td>Your speech, if you use voice input</td>
+      <td>Your device's speech recognition service — on most Android phones this is Google</td>
+      <td>To convert speech to text</td>
+    </tr>
+    <tr>
+      <td>A request for the document files</td>
+      <td>Dropbox</td>
+      <td>To download the official SQU documents</td>
+    </tr>
+  </table>
+
+  <p>Nothing else is transmitted. In particular, the app sends <strong>no</strong> account details, device identifiers, advertising IDs, contacts, location or usage analytics, because it collects none of those in the first place.</p>
+
+  <p>Because there are no accounts, the questions you ask are not linked to you by name. They are, however, ordinary internet requests: the services above will see your IP address, as they would for any app or website.</p>
+
+  <div class="notice">
+    <strong>Please do not type or say anything private.</strong> Your questions are sent to an external AI service. Treat the app like a search box, not like a message to a person: do not include your student ID, national ID, passport number, phone number, grades, medical details, or anything else you would not want leaving your phone. The app never needs any of it to answer a question about university regulations.
+  </div>
+
+  <h2>4. Third-Party Services</h2>
+  <p>The app depends on three external services. Each has its own privacy policy, which governs what it does with the data it receives:</p>
+  <ul>
+    <li><strong>Mistral AI</strong> — generates the answers. <a href="https://mistral.ai/terms/#privacy-policy" target="_blank" rel="noopener">Privacy policy</a></li>
+    <li><strong>Cloudflare</strong> — hosts the developer-operated relay that forwards questions to Mistral. <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Privacy policy</a></li>
+    <li><strong>Dropbox</strong> — stores the official SQU documents the app downloads. <a href="https://www.dropbox.com/privacy" target="_blank" rel="noopener">Privacy policy</a></li>
+  </ul>
+  <p>If you use voice input, your device's speech recognition provider (usually <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google</a>) also applies. You can avoid this entirely by typing instead of dictating.</p>
+  <p>The app contains <strong>no</strong> analytics, advertising, crash-reporting or tracking SDKs of any kind.</p>
+
+  <h2>5. What Is Stored on Your Device</h2>
+  <p>The app stores the following locally, and nowhere else:</p>
+  <ul>
+    <li><strong>The text of the SQU documents</strong>, cached so the app does not re-download them on every launch. This cache is <strong>encrypted with AES-256-GCM</strong> using a key generated on your device and held in the Android Keystore. It is deleted when the cache is refreshed or the app is uninstalled.</li>
+    <li><strong>Your settings</strong> — chosen voice language, answer language, light or dark theme — in Android's standard preferences storage.</li>
+  </ul>
+  <p>Your conversation is <strong>not</strong> saved. It exists only in memory while the app is open and disappears when the app is closed. There is no chat history on your device and none on any server.</p>
+
+  <h2>6. Data Retention</h2>
+  <p>We operate no database and keep no records of your questions. The relay that forwards questions does not store them; it passes them on and returns the answer. Standard, short-lived server logs may exist at Cloudflare and Mistral under their own retention policies, and may include IP addresses and error diagnostics.</p>
+  <p>Uninstalling the app removes everything it stored on your device.</p>
+
+  <h2>7. Accuracy of Answers</h2>
+  <p>Answers are generated by an AI model restricted to the official SQU documents supplied to the app, and each answer cites the document and page or section it came from. When the documents do not contain an answer, the app is designed to say so rather than guess.</p>
+  <p>Even so, AI-generated text can be wrong or incomplete, and the documents themselves may be out of date. <strong>Always confirm anything that affects your studies — deadlines, GPA requirements, fees, graduation conditions — with your college or the relevant university office before acting on it.</strong> Use the citation shown under each answer to check the source document.</p>
+
+  <h2>8. Children's Privacy</h2>
+  <p>The app is intended for university students and staff. It does not knowingly collect personal data from anyone, including children under 13, because it collects no personal data at all.</p>
+
+  <h2>9. Data Security</h2>
+  <p>Data sent to and from the app travels over encrypted HTTPS connections. The cached document text on your device is encrypted as described in section 5 and further protected by your device's own security, such as your screen lock and device encryption. No credentials or API keys are stored on your device.</p>
+
+  <h2>10. Your Rights</h2>
+  <p>Because the app holds no personal data about you and no account, there is nothing for us to look up, export or erase on request. You are in full control of the data on your device: clearing the app's data or uninstalling it removes everything. If you have any question about this, please write to us using the address below.</p>
+
+  <h2>11. Changes to This Policy</h2>
+  <p>If we make material changes to this policy, we will update the "Last updated" date at the top of this page. Continued use of the app after changes constitutes acceptance of the updated policy.</p>
+
+  <h2>12. Contact Us</h2>
+  <p>If you have any questions or concerns about this privacy policy, please contact us at:<br>
+  <a href="mailto:mail.masif@gmail.com">mail.masif@gmail.com</a></p>
+
+</div>
+
+<footer>
+  <div class="container">
+    &copy; 2026 Muhammad Asif · SQU KnowledgeHub · <a href="mailto:mail.masif@gmail.com">mail.masif@gmail.com</a>
+  </div>
+</footer>
+</body>
+</html>
